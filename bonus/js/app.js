@@ -35,45 +35,41 @@ for (let i = 0; i < slides.length; i++) {
 }
 
 arrowRightEL.addEventListener('click', function () {
-    // togliere la classe active dal list item corrente
     const currentSlide = slideElements[startIndex];
-
+    let nextSlide;
+    
     // SE list item corrente è l'ultima
     if (startIndex === slideElements.length - 1) {
-        currentSlide.classList.remove('active');
-
         // aggiungere la classe active al primo list item
-        const nextSlide = slideElements[0];
-        nextSlide.classList.add('active');
+        nextSlide = slideElements[0];
         startIndex = 0;
     } else {
-        currentSlide.classList.remove('active');
-
-        // aggiungere la classe active al list item successivo
-        const nextSlide = slideElements[startIndex + 1];
-        nextSlide.classList.add('active');
+        nextSlide = slideElements[startIndex + 1];
         startIndex++;
     }
+    
+    // togliere la classe active dal list item corrente
+    currentSlide.classList.remove('active');
+    // aggiungere la classe active al list item successivo
+    nextSlide.classList.add('active');
 });
 
 arrowLeftEL.addEventListener('click', function () {
-    // togliere la classe active dal list item corrente
     const currentSlide = slideElements[startIndex];
-
+    let prevSlide;
+    
     // SE list item corrente è il primo
     if (startIndex === 0) {
-        currentSlide.classList.remove('active');
-        
         // aggiungere la classe active all'ultimo list item
-        const prevSlide = slideElements[slideElements.length - 1];
-        prevSlide.classList.add('active');
+        prevSlide = slideElements[slideElements.length - 1];
         startIndex = slideElements.length - 1;
     } else {
-        currentSlide.classList.remove('active');
-    
-        // aggiungere la classe active al list item precedente
-        const prevSlide = slideElements[startIndex - 1];
-        prevSlide.classList.add('active');
+        prevSlide = slideElements[startIndex - 1];
         startIndex--;
     }
+    
+    // togliere la classe active dal list item corrente
+    currentSlide.classList.remove('active');
+    // aggiungere la classe active al list item precedente
+    prevSlide.classList.add('active');
 });

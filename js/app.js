@@ -11,6 +11,7 @@ let startIndex = 0;
 
 const slidesWrapperEl = document.querySelector('.slides-wrapper');
 const arrowRightEL = document.querySelector('.arrow-right');
+const arrowLeftEL = document.querySelector('.arrow-left');
 
 // creare il contenuto dello slider
 for (let i = 0; i < slides.length; i++) {
@@ -42,6 +43,17 @@ arrowRightEL.addEventListener('click', function () {
     const nextSlide = slideElements[startIndex + 1];
     nextSlide.classList.add('active');
     startIndex++;
+});
+
+arrowLeftEL.addEventListener('click', function () {
+    // togliere la classe active dal list item corrente
+    const currentSlide = slideElements[startIndex];
+    currentSlide.classList.remove('active');
+
+    // aggiungere la classe active al list item precedente
+    const prevSlide = slideElements[startIndex - 1];
+    prevSlide.classList.add('active');
+    startIndex--;
 });
 
 console.log(slideElements[0]);
